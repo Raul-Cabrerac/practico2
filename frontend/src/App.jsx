@@ -227,8 +227,13 @@ function App() {
                 method: 'PUT',
                 body: JSON.stringify(body)
             });
-            setSelectedTicket(ticket);
             await openProject(selectedProject.id);
+            setSelectedTicket(ticket);
+            setTicketEditForm({
+                titulo: ticket.titulo,
+                descripcion: ticket.descripcion,
+                usuarioAsignadoId: ticket.usuarioAsignadoId || ''
+            });
             setView('ticket-detail');
             setMessage('Ticket actualizado.');
         } catch (error) {
